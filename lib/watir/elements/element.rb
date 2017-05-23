@@ -227,18 +227,21 @@ module Watir
     # @param [Integer, Float] delay how long to wait between flashes
     #
 
-    def flash(color: 'red', flashes: 10, delay: 0)
+    def flash(color: 'red', flashes: 10, delay: 0, outline: TRUE)
       background_color = style("backgroundColor")
       element_color = driver.execute_script("arguments[0].style.backgroundColor", @element)
-
       flashes.times do |n|
         nextcolor = n.even? ? color : background_color
         driver.execute_script("arguments[0].style.backgroundColor = '#{nextcolor}'", @element)
         sleep(delay)
       end
-
-      driver.execute_script("arguments[0].style.backgroundColor = arguments[1]", @element, element_color)
-
+      if !outline
+     	      driver.execute_script("arguments[0].style.backgroundColor = arguments[1]", @element, element_color)
+           else
+     	      shadow = "0px 0px 2px 2px #{color},inset 0px 0px 2px 2px #{color}"
+     	      driver.execute_script("arguments[0].style.boxShadow = '#{shadow}'", @element)
+     	      driver.execute_script("arguments[0].scrollIntoView()", @element)
+           end
       self
     end
 
