@@ -238,7 +238,7 @@ module Watir
       if !outline
      	      driver.execute_script("arguments[0].style.backgroundColor = arguments[1]", @element, element_color)
            else
-     	      shadow = "0px 0px 2px 2px #{color},inset 0px 0px 2px 2px #{color}"
+     	      shadow = "0px 0px 3px 3px #{color},inset 0px 0px 3px 3px #{color}"
      	      driver.execute_script("arguments[0].style.boxShadow = '#{shadow}'", @element)
      	      driver.execute_script("arguments[0].scrollIntoView()", @element)
            end
