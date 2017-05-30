@@ -239,11 +239,9 @@ module Watir
      	      driver.execute_script("arguments[0].style.backgroundColor = arguments[1]", @element, element_color)
            else
      	      shadow = "0px 0px 3px 3px #{color},inset 0px 0px 3px 3px #{color}"
-            shadow = "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"
      	      driver.execute_script("arguments[0].style.boxShadow = '#{shadow}'", @element)
      	      driver.execute_script("arguments[0].scrollIntoView()", @element)
-            driver.execute_script("arguments[0].scrollIntoView()", @element)
-		driver.execute_script("arguments[0].style.borderRadius = '25px';arguments[0].style.margin = '10px 10px 10px 10px';arguments[0].style.padding = '10px 10px 10px 10px';", @element)
+		driver.execute_script("arguments[0].style.borderRadius = '3px';arguments[0].style.margin = '4px';arguments[0].style.padding = '4px';", @element)
            end
       self
     end
